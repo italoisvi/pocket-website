@@ -48,19 +48,11 @@ function FloatingIcon({
   size?: 'tiny' | 'small' | 'medium' | 'large' | 'xlarge';
 }) {
   const sizeClasses = {
-    tiny: 'w-6 h-6 md:w-8 md:h-8',
-    small: 'w-8 h-8 md:w-12 md:h-12',
-    medium: 'w-12 h-12 md:w-16 md:h-16',
-    large: 'w-16 h-16 md:w-20 md:h-20',
-    xlarge: 'w-20 h-20 md:w-24 md:h-24'
-  };
-
-  const iconSizeClasses = {
-    tiny: 'w-3 h-3 md:w-4 md:h-4',
-    small: 'w-4 h-4 md:w-6 md:h-6',
-    medium: 'w-6 h-6 md:w-8 md:h-8',
-    large: 'w-8 h-8 md:w-10 md:h-10',
-    xlarge: 'w-10 h-10 md:w-12 md:h-12'
+    tiny: 'w-8 h-8 md:w-10 md:h-10',
+    small: 'w-10 h-10 md:w-14 md:h-14',
+    medium: 'w-14 h-14 md:w-18 md:h-18',
+    large: 'w-18 h-18 md:w-22 md:h-22',
+    xlarge: 'w-22 h-22 md:w-28 md:h-28'
   };
 
   return (
@@ -78,11 +70,11 @@ function FloatingIcon({
       }}
     >
       <div
-        className={`${sizeClasses[size]} bg-surface/80 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg border border-border transition-all duration-300 ${
+        className={`${sizeClasses[size]} bg-surface/80 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg border border-border transition-all duration-300 p-2 ${
           isHovered ? "scale-110" : ""
         }`}
       >
-        <div className={iconSizeClasses[size]}>{icon}</div>
+        <div className="w-full h-full flex items-center justify-center">{icon}</div>
       </div>
     </div>
   );

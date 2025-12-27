@@ -6,7 +6,7 @@ export default function Termos() {
         <p className="text-text-secondary mb-4">
           Última atualização: {new Date().toLocaleDateString('pt-BR')}
         </p>
-        <p className="text-lg text-text-secondary mb-16 leading-relaxed">
+        <p className="text-text-secondary mb-16 leading-relaxed">
           Ao usar o Pocket, você concorda com estes termos. Leia-os atentamente.
         </p>
 
@@ -39,7 +39,7 @@ export default function Termos() {
           </Section>
 
           <Section title="3. Requisitos de Conta">
-            <h3 className="text-xl font-medium mb-3">3.1 Criação de Conta</h3>
+            <h3 className="text-2xl md:text-3xl font-medium mb-3">3.1 Criação de Conta</h3>
             <ul className="space-y-2 text-text-secondary mb-4">
               <li>Você deve ter pelo menos 18 anos de idade</li>
               <li>Fornecer informações verdadeiras, precisas e completas</li>
@@ -58,7 +58,7 @@ export default function Termos() {
           </Section>
 
           <Section title="4. Uso Aceitável">
-            <h3 className="text-xl font-medium mb-3">4.1 Você Concorda em NÃO:</h3>
+            <h3 className="text-2xl md:text-3xl font-medium mb-3">4.1 Você Concorda em NÃO:</h3>
             <ul className="space-y-2 text-text-secondary">
               <li>Usar o serviço para fins ilegais ou fraudulentos</li>
               <li>Tentar acessar contas de outros usuários</li>
@@ -170,13 +170,13 @@ export default function Termos() {
           </Section>
 
           <Section title="12. Encerramento de Conta">
-            <h3 className="text-xl font-medium mb-3">12.1 Por Você</h3>
+            <h3 className="text-2xl md:text-3xl font-medium mb-3">12.1 Por Você</h3>
             <p className="text-text-secondary leading-relaxed mb-4">
               Você pode encerrar sua conta a qualquer momento através das configurações
               do app. Seus dados serão excluídos conforme descrito na Política de Privacidade.
             </p>
 
-            <h3 className="text-xl font-medium mb-3">12.2 Por Nós</h3>
+            <h3 className="text-2xl md:text-3xl font-medium mb-3">12.2 Por Nós</h3>
             <p className="text-text-secondary leading-relaxed">
               Podemos suspender ou encerrar sua conta se você violar estes Termos,
               usar o serviço de forma inadequada, ou se for legalmente requerido.
@@ -260,7 +260,7 @@ function Section({
 }) {
   return (
     <section>
-      <h2 className="text-3xl font-semibold mb-6">{title}</h2>
+      <h2 className="text-4xl md:text-5xl font-semibold mb-6">{title}</h2>
       {children}
     </section>
   );
