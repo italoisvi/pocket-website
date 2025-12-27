@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   ScanIcon,
   TagIcon,
@@ -126,10 +127,13 @@ export default function Home() {
             onMouseLeave={() => setIsIconAreaHovered(false)}
           >
             {/* Phone Image */}
-            <img
+            <Image
               src="/celular.png"
               alt="App Pocket no celular"
+              width={400}
+              height={800}
               className="relative z-10 max-w-sm w-full h-auto md:ml-16"
+              priority
             />
 
             {/* Floating Icons - positioned around the phone */}

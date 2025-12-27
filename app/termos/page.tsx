@@ -121,7 +121,7 @@ export default function Termos() {
 
           <Section title="8. Limitação de Responsabilidade">
             <p className="text-text-secondary leading-relaxed mb-4">
-              <strong className="text-foreground">O SERVIÇO É FORNECIDO "COMO ESTÁ"</strong>,
+              <strong className="text-foreground">O SERVIÇO É FORNECIDO &quot;COMO ESTÁ&quot;</strong>,
               sem garantias de qualquer tipo, expressas ou implícitas.
             </p>
             <p className="text-text-secondary leading-relaxed mb-4">
