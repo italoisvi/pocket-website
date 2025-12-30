@@ -21,7 +21,6 @@ import {
   RestaurantIcon,
   SavingsIcon,
   InvestmentsIcon,
-  AppStoreBadge,
 } from "@/components/icons";
 import { ReactNode, useState } from "react";
 
@@ -86,28 +85,28 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="container mx-auto px-6 py-20 md:py-32">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <section className="container mx-auto px-6 py-12 md:py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="text-center md:text-left">
-            <h1 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-semibold tracking-tight mb-4 md:mb-6">
               Suas finanças,
               <br />
               <span className="text-text-secondary">simplificadas</span>
             </h1>
-            <p className="text-text-secondary mb-12 leading-relaxed">
+            <p className="text-text-secondary mb-8 md:mb-12 leading-relaxed text-sm md:text-base lg:text-lg">
               Gerencie seus gastos de forma inteligente com categorização automática,
               análise por IA e insights financeiros personalizados.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center md:justify-start">
               <Link
                 href="#download"
-                className="px-8 py-4 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity font-medium text-lg"
+                className="px-6 py-3 md:px-8 md:py-4 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity font-medium text-base md:text-lg"
               >
                 Baixar Agora
               </Link>
               <Link
                 href="/recursos"
-                className="px-8 py-4 border-2 border-border rounded-xl hover:bg-surface transition-colors font-medium text-lg"
+                className="px-6 py-3 md:px-8 md:py-4 border-2 border-border rounded-xl hover:bg-surface transition-colors font-medium text-base md:text-lg"
               >
                 Ver Recursos
               </Link>
@@ -175,17 +174,17 @@ export default function Home() {
       </section>
 
       {/* Features Grid */}
-      <section className="container mx-auto px-6 py-20">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-semibold mb-4">
+      <section className="container mx-auto px-6 py-12 md:py-20">
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-3 md:mb-4">
             Tudo que você precisa
           </h2>
-          <p className="text-xl text-text-secondary">
+          <p className="text-base md:text-xl text-text-secondary">
             Ferramentas poderosas para uma vida financeira saudável
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
           <FeatureCard
             icon={<ScanIcon />}
             title="Scan de Recibos"
@@ -220,54 +219,45 @@ export default function Home() {
       </section>
 
       {/* Categories Section */}
-      <section className="bg-surface py-20">
+      <section className="bg-surface py-12 md:py-20">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-semibold mb-4">
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-3 md:mb-4">
               Categorias Inteligentes
             </h2>
-            <p className="text-xl text-text-secondary">
+            <p className="text-base md:text-xl text-text-secondary">
               Organize seus gastos em categorias que fazem sentido para você
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
-            <CategoryBadge icon={<HouseIcon className="w-10 h-10" />} name="Moradia" color="#FF6B6B" />
-            <CategoryBadge icon={<BasketIcon className="w-10 h-10" />} name="Alimentação" color="#4ECDC4" />
-            <CategoryBadge icon={<CarIcon className="w-10 h-10" />} name="Transporte" color="#FFD93D" />
-            <CategoryBadge icon={<HealthIcon className="w-10 h-10" />} name="Saúde" color="#FCBAD3" />
-            <CategoryBadge icon={<EducationIcon className="w-10 h-10" />} name="Educação" color="#95E1D3" />
-            <CategoryBadge icon={<LeisureIcon className="w-10 h-10" />} name="Lazer" color="#A8D8EA" />
-            <CategoryBadge icon={<ClothingIcon className="w-10 h-10" />} name="Vestuário" color="#FFB6B9" />
-            <CategoryBadge icon={<BeautyIcon className="w-10 h-10" />} name="Beleza" color="#E0BBE4" />
-            <CategoryBadge icon={<ElectronicsIcon className="w-10 h-10" />} name="Eletrônicos" color="#C5E1A5" />
-            <CategoryBadge icon={<RestaurantIcon className="w-10 h-10" />} name="Delivery" color="#AA96DA" />
-            <CategoryBadge icon={<SavingsIcon className="w-10 h-10" />} name="Poupança" color="#81C784" />
-            <CategoryBadge icon={<InvestmentsIcon className="w-10 h-10" />} name="Investimentos" color="#4DB6AC" />
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 max-w-5xl mx-auto">
+            <CategoryBadge icon={<HouseIcon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />} name="Moradia" color="#FF6B6B" />
+            <CategoryBadge icon={<BasketIcon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />} name="Alimentação" color="#4ECDC4" />
+            <CategoryBadge icon={<CarIcon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />} name="Transporte" color="#FFD93D" />
+            <CategoryBadge icon={<HealthIcon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />} name="Saúde" color="#FCBAD3" />
+            <CategoryBadge icon={<EducationIcon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />} name="Educação" color="#95E1D3" />
+            <CategoryBadge icon={<LeisureIcon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />} name="Lazer" color="#A8D8EA" />
+            <CategoryBadge icon={<ClothingIcon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />} name="Vestuário" color="#FFB6B9" />
+            <CategoryBadge icon={<BeautyIcon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />} name="Beleza" color="#E0BBE4" />
+            <CategoryBadge icon={<ElectronicsIcon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />} name="Eletrônicos" color="#C5E1A5" />
+            <CategoryBadge icon={<RestaurantIcon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />} name="Delivery" color="#AA96DA" />
+            <CategoryBadge icon={<SavingsIcon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />} name="Poupança" color="#81C784" />
+            <CategoryBadge icon={<InvestmentsIcon className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10" />} name="Investimentos" color="#4DB6AC" />
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto px-6 py-20 md:py-32">
+      <section className="container mx-auto px-6 py-12 md:py-20 lg:py-32">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-semibold mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-semibold mb-4 md:mb-6">
             Comece sua jornada financeira hoje
           </h2>
-          <p className="text-2xl md:text-3xl text-text-secondary mb-12">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-text-secondary mb-8 md:mb-12">
             Junte-se a milhares de usuários que já transformaram sua relação com o dinheiro.
           </p>
-          <div id="download" className="space-y-6">
-            <p className="text-text-secondary text-2xl md:text-3xl">Disponível para iOS:</p>
-            <div className="flex justify-center">
-              <a
-                href="#"
-                className="inline-block transition-opacity hover:opacity-80"
-                aria-label="Baixar na App Store"
-              >
-                <AppStoreBadge className="h-16" />
-              </a>
-            </div>
+          <div id="download">
+            {/* Download section moved to footer */}
           </div>
         </div>
       </section>
@@ -285,10 +275,10 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <div className="p-6 rounded-xl border-2 border-border hover:border-foreground/20 transition-colors">
-      <div className="mb-6 text-foreground">{icon}</div>
-      <h3 className="text-2xl font-semibold mb-3">{title}</h3>
-      <p className="text-text-secondary leading-relaxed text-lg">{description}</p>
+    <div className="p-4 md:p-6 rounded-xl border-2 border-border hover:border-foreground/20 transition-colors">
+      <div className="mb-4 md:mb-6 text-foreground">{icon}</div>
+      <h3 className="text-lg md:text-xl lg:text-2xl font-semibold mb-2 md:mb-3">{title}</h3>
+      <p className="text-text-secondary leading-relaxed text-sm md:text-base lg:text-lg">{description}</p>
     </div>
   );
 }
@@ -304,13 +294,13 @@ function CategoryBadge({
 }) {
   return (
     <div
-      className="p-5 rounded-xl text-center transition-transform hover:scale-105"
+      className="p-3 md:p-5 rounded-xl text-center transition-transform hover:scale-105"
       style={{ backgroundColor: color + "20" }}
     >
-      <div className="mb-3 flex justify-center" style={{ color }}>
+      <div className="mb-2 md:mb-3 flex justify-center" style={{ color }}>
         {icon}
       </div>
-      <div className="text-base font-medium" style={{ color }}>
+      <div className="text-xs md:text-sm lg:text-base font-medium" style={{ color }}>
         {name}
       </div>
     </div>

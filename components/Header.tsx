@@ -9,11 +9,17 @@ import { usePathname } from "next/navigation";
 export default function Header() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
 
   return (
     <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
@@ -97,56 +103,83 @@ export default function Header() {
 
             <Link
               href="#download"
-              className="px-6 py-2 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity font-medium"
+              className="hidden md:inline-block px-6 py-2 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity font-medium"
             >
               Baixar App
             </Link>
+
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 rounded-lg hover:bg-surface transition-colors"
+              aria-label="Menu"
+            >
+              {mobileMenuOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
 
-        {/* Mobile menu */}
-        <div className="md:hidden mt-4 flex flex-wrap gap-4">
-          <Link
-            href="/"
-            className={`text-sm transition-colors ${
-              pathname === "/"
-                ? "text-foreground font-semibold border-b-2 border-foreground pb-1"
-                : "text-foreground/80 hover:text-foreground"
-            }`}
-          >
-            Início
-          </Link>
-          <Link
-            href="/recursos"
-            className={`text-sm transition-colors ${
-              pathname === "/recursos"
-                ? "text-foreground font-semibold border-b-2 border-foreground pb-1"
-                : "text-foreground/80 hover:text-foreground"
-            }`}
-          >
-            Recursos
-          </Link>
-          <Link
-            href="/sobre"
-            className={`text-sm transition-colors ${
-              pathname === "/sobre"
-                ? "text-foreground font-semibold border-b-2 border-foreground pb-1"
-                : "text-foreground/80 hover:text-foreground"
-            }`}
-          >
-            Sobre
-          </Link>
-          <Link
-            href="/privacidade"
-            className={`text-sm transition-colors ${
-              pathname === "/privacidade"
-                ? "text-foreground font-semibold border-b-2 border-foreground pb-1"
-                : "text-foreground/80 hover:text-foreground"
-            }`}
-          >
-            Privacidade
-          </Link>
-        </div>
+        {/* Mobile menu dropdown */}
+        {mobileMenuOpen && (
+          <div className="md:hidden mt-4 pb-4 border-t border-border pt-4 animate-in slide-in-from-top-5 duration-200">
+            <div className="flex flex-col gap-4">
+              <Link
+                href="/"
+                className={`text-base py-2 transition-colors ${
+                  pathname === "/"
+                    ? "text-foreground font-semibold"
+                    : "text-foreground/80 hover:text-foreground"
+                }`}
+              >
+                Início
+              </Link>
+              <Link
+                href="/recursos"
+                className={`text-base py-2 transition-colors ${
+                  pathname === "/recursos"
+                    ? "text-foreground font-semibold"
+                    : "text-foreground/80 hover:text-foreground"
+                }`}
+              >
+                Recursos
+              </Link>
+              <Link
+                href="/sobre"
+                className={`text-base py-2 transition-colors ${
+                  pathname === "/sobre"
+                    ? "text-foreground font-semibold"
+                    : "text-foreground/80 hover:text-foreground"
+                }`}
+              >
+                Sobre
+              </Link>
+              <Link
+                href="/privacidade"
+                className={`text-base py-2 transition-colors ${
+                  pathname === "/privacidade"
+                    ? "text-foreground font-semibold"
+                    : "text-foreground/80 hover:text-foreground"
+                }`}
+              >
+                Privacidade
+              </Link>
+              <Link
+                href="#download"
+                className="mt-2 px-6 py-3 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity font-medium text-center"
+              >
+                Baixar App
+              </Link>
+            </div>
+          </div>
+        )}
       </nav>
     </header>
   );
