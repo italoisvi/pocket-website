@@ -5,7 +5,11 @@
       "Bash(git add:*)",
       "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: Pocket website with floating icons animation\n\n- Next.js 15 website for Pocket financial app\n- Animated floating category icons around phone mockup\n- Dark/light theme support\n- Responsive design with Tailwind CSS\n- Pages: Home, Sobre, Recursos, Privacidade\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(npm run build:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm install:*)",
+      "Bash(vercel env add:*)",
+      "Bash(git push:*)"
     ]
   }
 }

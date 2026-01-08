@@ -28,8 +28,10 @@ export async function POST(request: Request) {
     const assuntoFormatado = assuntosMap[assunto] || assunto;
 
     // Enviar email usando Resend
+    // IMPORTANTE: Use 'onboarding@resend.dev' até verificar seu domínio no Resend
+    // Depois de verificar, troque para 'noreply@gladiussistemas.com.br'
     const { data, error } = await resend.emails.send({
-      from: 'Pocket Website <noreply@gladiussistemas.com.br>',
+      from: 'Pocket Website <onboarding@resend.dev>',
       to: 'contato@gladiussistemas.com.br',
       replyTo: email,
       subject: `[Pocket Contato] ${assuntoFormatado} - ${nome}`,

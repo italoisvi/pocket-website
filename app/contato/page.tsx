@@ -269,7 +269,7 @@ export default function Contato() {
           </h3>
           <div className="space-y-4 text-text-secondary">
             <p className="text-base md:text-lg">
-              <strong className="text-foreground">Email:</strong> suporte@pocket-app.com
+              <strong className="text-foreground">Email:</strong> contato@gladiussistemas.com.br
             </p>
             <p className="text-base md:text-lg">
               <strong className="text-foreground">Horário de Atendimento:</strong> Segunda a Sexta, 9h às 18h
