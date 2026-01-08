@@ -71,6 +71,16 @@ export default function Header() {
               Sobre
             </Link>
             <Link
+              href="/contato"
+              className={`transition-colors ${
+                pathname === "/contato"
+                  ? "text-foreground font-semibold border-b-2 border-foreground pb-1"
+                  : "text-foreground/80 hover:text-foreground"
+              }`}
+            >
+              Contato
+            </Link>
+            <Link
               href="/privacidade"
               className={`transition-colors ${
                 pathname === "/privacidade"
@@ -160,6 +170,16 @@ export default function Header() {
                 }`}
               >
                 Sobre
+              </Link>
+              <Link
+                href="/contato"
+                className={`text-base py-2 transition-colors ${
+                  pathname === "/contato"
+                    ? "text-foreground font-semibold"
+                    : "text-foreground/80 hover:text-foreground"
+                }`}
+              >
+                Contato
               </Link>
               <Link
                 href="/privacidade"
