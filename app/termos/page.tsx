@@ -6,9 +6,39 @@ export default function Termos() {
         <p className="text-text-secondary mb-4">
           Última atualização: {new Date().toLocaleDateString('pt-BR')}
         </p>
-        <p className="text-text-secondary mb-16 leading-relaxed">
+        <p className="text-text-secondary mb-8 leading-relaxed">
           Ao usar o Pocket, você concorda com estes termos. Leia-os atentamente.
         </p>
+
+        {/* EULA Card */}
+        <div className="bg-gradient-to-br from-foreground/10 to-foreground/5 p-6 md:p-8 rounded-2xl border-2 border-foreground/20 mb-16">
+          <div className="flex items-start gap-4">
+            <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 bg-foreground rounded-xl flex items-center justify-center">
+              <svg className="w-6 h-6 md:w-7 md:h-7 text-background" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl md:text-2xl font-semibold mb-2">
+                Contrato de Licença (EULA)
+              </h3>
+              <p className="text-text-secondary leading-relaxed mb-4">
+                O Pocket utiliza o Contrato de Licença Padrão da Apple (EULA) para aplicativos distribuídos através da App Store.
+              </p>
+              <a
+                href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity font-medium text-base"
+              >
+                Ver EULA da Apple
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
 
         <div className="space-y-12 prose prose-lg max-w-none">
           <Section title="1. Aceitação dos Termos">
@@ -232,9 +262,10 @@ export default function Termos() {
             </p>
             <div className="bg-surface p-6 rounded-xl border-2 border-border">
               <p className="text-text-secondary">
-                <strong className="text-foreground">E-mail:</strong> suporte@pocket-app.com
-                <br />
-                <strong className="text-foreground">Legal:</strong> legal@pocket-app.com
+                <strong className="text-foreground">E-mail:</strong>{" "}
+                <a href="mailto:contato@gladiussistemas.com.br" className="text-foreground underline hover:no-underline">
+                  contato@gladiussistemas.com.br
+                </a>
               </p>
             </div>
           </Section>
