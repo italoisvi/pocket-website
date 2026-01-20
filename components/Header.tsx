@@ -111,12 +111,14 @@ export default function Header() {
               </button>
             )}
 
-            <Link
-              href="#download"
+            <a
+              href="https://apps.apple.com/us/app/pocket/id6756937003"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden md:inline-block px-6 py-2 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity font-medium"
             >
               Baixar App
-            </Link>
+            </a>
 
             {/* Mobile menu button */}
             <button
@@ -191,12 +193,14 @@ export default function Header() {
               >
                 Privacidade
               </Link>
-              <Link
-                href="#download"
+              <a
+                href="https://apps.apple.com/us/app/pocket/id6756937003"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-2 px-6 py-3 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity font-medium text-center"
               >
                 Baixar App
-              </Link>
+              </a>
             </div>
           </div>
         )}

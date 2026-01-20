@@ -49,7 +49,9 @@ export default function Footer() {
             <h4 className="text-xl md:text-3xl font-medium mb-3 md:mb-4">Download</h4>
             <div className="flex justify-center md:justify-start">
               <a
-                href="#"
+                href="https://apps.apple.com/us/app/pocket/id6756937003"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block transition-opacity hover:opacity-80"
                 aria-label="Baixar na App Store"
               >
