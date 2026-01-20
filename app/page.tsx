@@ -22,7 +22,8 @@ import {
   SavingsIcon,
   InvestmentsIcon,
 } from "@/components/icons";
-import { ReactNode, useState } from "react";
+import { ReactNode, useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 
 // Floating Icon Component with spread effect
 function FloatingIcon({
@@ -81,6 +82,26 @@ function FloatingIcon({
 
 export default function Home() {
   const [isIconAreaHovered, setIsIconAreaHovered] = useState(false);
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Determina qual imagem do celular usar baseado no tema
+  // Modo escuro: celular-light.png (tela clara no fundo escuro)
+  // Modo claro: celular-dark.png (tela escura no fundo claro)
+  // Modo noturno: celular-night.png
+  const getPhoneImage = () => {
+    if (theme === "night") {
+      return "/celular-night.png";
+    }
+    if (resolvedTheme === "dark") {
+      return "/celular-light.png";
+    }
+    return "/celular-dark.png";
+  };
 
   return (
     <div className="overflow-hidden">
@@ -118,14 +139,18 @@ export default function Home() {
             onMouseLeave={() => setIsIconAreaHovered(false)}
           >
             {/* Phone Image */}
-            <Image
-              src="/celular.png"
-              alt="App Pocket no celular"
-              width={400}
-              height={800}
-              className="relative z-10 max-w-sm w-full h-auto md:ml-16"
-              priority
-            />
+            {mounted ? (
+              <Image
+                src={getPhoneImage()}
+                alt="App Pocket no celular"
+                width={400}
+                height={800}
+                className="relative z-10 max-w-sm w-full h-auto md:ml-16"
+                priority
+              />
+            ) : (
+              <div className="relative z-10 max-w-sm w-full h-auto md:ml-16" style={{ width: 400, height: 800 }} />
+            )}
 
             {/* Floating Icons - positioned around the phone (hidden on mobile) */}
             <div className="absolute inset-0 pointer-events-none hidden md:block">

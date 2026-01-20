@@ -20,6 +20,15 @@
   --text-secondary: #a0a0a0;
 }
 
+.night {
+  --background: #0a1929;
+  --foreground: #ffffff;
+  --primary: #ffffff;
+  --surface: #132f4c;
+  --border: #1e4976;
+  --text-secondary: #b2bac2;
+}
+
 * {
   margin: 0;
   padding: 0;
