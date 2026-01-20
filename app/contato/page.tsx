@@ -87,8 +87,8 @@ export default function Contato() {
       answer: "Sim! Você pode exportar seus dados financeiros em diversos formatos (PDF, CSV, Excel) a qualquer momento para análise ou backup.",
     },
     {
-      question: "O Pocket está disponível para iOS e Android?",
-      answer: "Atualmente o Pocket está disponível para Android. A versão iOS está em desenvolvimento e será lançada em breve. Cadastre-se na nossa newsletter para ser notificado do lançamento.",
+      question: "O Pocket está disponível para quais plataformas?",
+      answer: "Atualmente o Pocket está disponível exclusivamente para iOS. Você pode baixar gratuitamente na App Store.",
     },
     {
       question: "Como entro em contato com o suporte?",

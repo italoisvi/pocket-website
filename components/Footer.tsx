@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container mx-auto px-6 py-8 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-8">
           <div className="text-center md:text-left">
-            <h3 className="text-3xl md:text-5xl font-semibold mb-3 md:mb-4">Pocket</h3>
+            <h3 className="font-cormorant text-3xl md:text-5xl font-semibold mb-3 md:mb-4">Pocket</h3>
             <p className="text-text-secondary text-base md:text-2xl leading-relaxed">
               Sua jornada para uma vida financeira mais saudável começa aqui.
             </p>

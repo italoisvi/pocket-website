@@ -21,30 +21,21 @@ export default function Header() {
     setMobileMenuOpen(false);
   }, [pathname]);
 
-  // Determina qual logo usar baseado no tema
-  const getLogo = () => {
-    if (theme === "night" || resolvedTheme === "dark") {
-      return "/kangurubranco.png";
-    }
-    return "/kangurupreto.png";
-  };
-
   return (
     <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-      <nav className="container mx-auto px-6 py-4">
+      <nav className="mx-auto px-4 md:px-8 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center">
-            {mounted ? (
-              <Image
-                src={getLogo()}
-                alt="Pocket"
-                width={50}
-                height={50}
-                className="h-12 w-auto"
-              />
-            ) : (
-              <div className="h-12 w-12" />
-            )}
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/kanguroo.png"
+              alt="Pocket"
+              width={64}
+              height={64}
+              className="h-16 w-auto"
+            />
+            <span className="font-cormorant text-4xl md:text-5xl font-semibold text-foreground">
+              Pocket
+            </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
@@ -130,14 +121,18 @@ export default function Header() {
               </button>
             )}
 
-            <a
-              href="https://apps.apple.com/us/app/pocket/id6756937003"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:inline-block px-6 py-2 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity font-medium"
+            <Link
+              href="/entrar"
+              className="hidden md:inline-block px-5 py-2 border-2 border-border rounded-xl hover:bg-surface transition-colors font-medium"
             >
-              Baixar App
-            </a>
+              Entrar
+            </Link>
+            <Link
+              href="/cadastrar"
+              className="hidden md:inline-block px-5 py-2 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity font-medium"
+            >
+              Cadastrar
+            </Link>
 
             {/* Mobile menu button */}
             <button
@@ -202,14 +197,18 @@ export default function Header() {
               >
                 Contato
               </Link>
-              <a
-                href="https://apps.apple.com/us/app/pocket/id6756937003"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 px-6 py-3 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity font-medium text-center"
+              <Link
+                href="/entrar"
+                className="mt-2 px-6 py-3 border-2 border-border rounded-xl hover:bg-surface transition-colors font-medium text-center"
               >
-                Baixar App
-              </a>
+                Entrar
+              </Link>
+              <Link
+                href="/cadastrar"
+                className="px-6 py-3 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity font-medium text-center"
+              >
+                Cadastrar
+              </Link>
             </div>
           </div>
         )}
