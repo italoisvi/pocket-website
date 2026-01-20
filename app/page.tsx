@@ -177,7 +177,7 @@ export default function Home() {
             Comece sua jornada financeira hoje
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-text-secondary mb-8 md:mb-12">
-            Junte-se a milhares de usuarios que ja transformaram sua relacao com o dinheiro.
+            Junte-se a milhares de usuários que já transformaram sua relação com o dinheiro.
           </p>
           <div id="download">
             {/* Download section moved to footer */}
