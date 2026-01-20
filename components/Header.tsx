@@ -80,16 +80,6 @@ export default function Header() {
             >
               Contato
             </Link>
-            <Link
-              href="/privacidade"
-              className={`transition-colors ${
-                pathname === "/privacidade"
-                  ? "text-foreground font-semibold border-b-2 border-foreground pb-1"
-                  : "text-foreground/80 hover:text-foreground"
-              }`}
-            >
-              Privacidade
-            </Link>
           </div>
 
           <div className="flex items-center gap-4">
@@ -182,16 +172,6 @@ export default function Header() {
                 }`}
               >
                 Contato
-              </Link>
-              <Link
-                href="/privacidade"
-                className={`text-base py-2 transition-colors ${
-                  pathname === "/privacidade"
-                    ? "text-foreground font-semibold"
-                    : "text-foreground/80 hover:text-foreground"
-                }`}
-              >
-                Privacidade
               </Link>
               <a
                 href="https://apps.apple.com/us/app/pocket/id6756937003"

@@ -127,8 +127,8 @@ export default function Home() {
               priority
             />
 
-            {/* Floating Icons - positioned around the phone */}
-            <div className="absolute inset-0 pointer-events-none">
+            {/* Floating Icons - positioned around the phone (hidden on mobile) */}
+            <div className="absolute inset-0 pointer-events-none hidden md:block">
               {/* Left side icons - varied sizes for depth */}
               <FloatingIcon icon={<HouseIcon />} delay={0} top="5%" left="-8%" duration={3.2} spreadX={-50} spreadY={-35} isHovered={isIconAreaHovered} size="xlarge" />
               <FloatingIcon icon={<BasketIcon />} delay={0.8} top="15%" left="-2%" duration={2.7} spreadX={-30} spreadY={-20} isHovered={isIconAreaHovered} size="tiny" />
