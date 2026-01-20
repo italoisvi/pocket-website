@@ -199,13 +199,21 @@ export default function Header() {
               </Link>
               <Link
                 href="/entrar"
-                className="mt-2 px-6 py-3 border-2 border-border rounded-xl hover:bg-surface transition-colors font-medium text-center"
+                className={`text-base py-2 transition-colors ${
+                  pathname === "/entrar"
+                    ? "text-foreground font-semibold"
+                    : "text-foreground/80 hover:text-foreground"
+                }`}
               >
                 Entrar
               </Link>
               <Link
                 href="/cadastrar"
-                className="px-6 py-3 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity font-medium text-center"
+                className={`text-base py-2 transition-colors ${
+                  pathname === "/cadastrar"
+                    ? "text-foreground font-semibold"
+                    : "text-foreground/80 hover:text-foreground"
+                }`}
               >
                 Cadastrar
               </Link>

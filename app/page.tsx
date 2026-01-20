@@ -55,7 +55,7 @@ export default function Home() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-semibold tracking-tight mb-4 md:mb-6">
               Suas finanças,
               <br />
-              <span className="text-text-secondary">simplificadas</span>
+              <span className="text-[#fee077]">simplificadas</span>
             </h1>
             <p className="text-text-secondary mb-8 md:mb-12 leading-relaxed text-base md:text-lg lg:text-xl">
               Gerencie seus gastos de forma inteligente com categorização automática,
@@ -78,7 +78,7 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="relative flex justify-center md:justify-center">
+          <div className="relative flex justify-center md:justify-end">
             {/* Phone Image */}
             {mounted ? (
               <Image

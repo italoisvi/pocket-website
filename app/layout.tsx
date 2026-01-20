@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   keywords: ["finanças pessoais", "controle financeiro", "gastos", "economia", "orçamento"],
   authors: [{ name: "Pocket" }],
   icons: {
-    icon: "/favicon.png",
+    icon: "/kanguroo.png",
   },
   openGraph: {
     title: "Pocket - Finanças Pessoais Inteligentes",
