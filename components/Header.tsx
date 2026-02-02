@@ -121,19 +121,6 @@ export default function Header() {
               </button>
             )}
 
-            <Link
-              href="/entrar"
-              className="hidden md:inline-block px-5 py-2 border-2 border-border rounded-xl hover:bg-surface transition-colors font-medium"
-            >
-              Entrar
-            </Link>
-            <Link
-              href="/cadastrar"
-              className="hidden md:inline-block px-5 py-2 bg-foreground text-background rounded-xl hover:opacity-90 transition-opacity font-medium"
-            >
-              Cadastrar
-            </Link>
-
             {/* Mobile menu button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
