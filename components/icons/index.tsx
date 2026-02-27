@@ -143,6 +143,33 @@ export function InvestmentsIcon({ className = "w-12 h-12", color }: { className?
   );
 }
 
+export function ChatIcon({ className = "w-12 h-12" }: { className?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className} fill="currentColor">
+      <path d="M12,0C5.383,0,0,4.935,0,11c0,2.329,.737,4.534,2.13,6.39l-1.983,5.455c-.103,.284-.031,.601,.185,.815,.147,.146,.344,.224,.545,.224,.091,0,.183-.013,.272-.04l6.276-1.882c1.505,.607,3.098,.923,4.744,.924h.002c6.616,0,11.998-4.936,11.998-11.003S18.547,0,12,0Zm.002,21c-1.494,0-2.943-.294-4.307-.874-.134-.057-.28-.074-.422-.05l-5.181,1.554,1.606-4.415c.072-.197,.058-.414-.037-.602C2.573,15.239,1.931,13.167,1.931,11c0-4.962,4.486-9,10-9s10.068,4.038,10.068,9-4.486,9.117-10,9.117l.002-.117Z"/>
+    </svg>
+  );
+}
+
+export function TargetIcon({ className = "w-12 h-12" }: { className?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.5">
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" fill="currentColor" />
+    </svg>
+  );
+}
+
+export function SparkleIcon({ className = "w-12 h-12" }: { className?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className} fill="currentColor">
+      <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/>
+      <path d="M20 3L21 6L24 7L21 8L20 11L19 8L16 7L19 6L20 3Z" opacity="0.6"/>
+    </svg>
+  );
+}
+
 export function AppStoreBadge({ className = "h-12" }: { className?: string }) {
   return (
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 135 40" className={className}>

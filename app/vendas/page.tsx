@@ -1,16 +1,46 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
+import {
+  ScanIcon,
+  AIIcon,
+  LockIcon,
+  ChatIcon,
+  TargetIcon,
+  SparkleIcon,
+} from "@/components/icons";
 
 export default function Vendas() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [carouselIndex, setCarouselIndex] = useState(0);
+  const totalSlides = 6;
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const nextSlide = () => {
+    setCarouselIndex((prev) => (prev + 1) % totalSlides);
+  };
+
+  const prevSlide = () => {
+    setCarouselIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  const getCarouselImage = () => {
+    const index = carouselIndex + 1;
+    if (theme === "night") {
+      return `/carousel/night-${index}.png`;
+    }
+    if (resolvedTheme === "dark") {
+      return `/carousel/dark-${index}.png`;
+    }
+    return `/carousel/light-${index}.png`;
+  };
 
   const getPhoneImage = () => {
     if (theme === "night") {
@@ -61,6 +91,24 @@ export default function Vendas() {
 
   return (
     <div className="overflow-hidden min-h-screen">
+      {/* Header com logo */}
+      <header className="border-b border-border">
+        <nav className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
+          <Link href="/" className="flex items-center gap-2 w-fit">
+            <Image
+              src="/kanguroo.png"
+              alt="Pocket"
+              width={48}
+              height={48}
+              className="h-10 w-auto sm:h-12"
+            />
+            <span className="font-cormorant text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground">
+              Pocket
+            </span>
+          </Link>
+        </nav>
+      </header>
+
       {/* Botão de tema fixo no canto superior direito */}
       {mounted && (
         <button
@@ -91,6 +139,7 @@ export default function Vendas() {
           )}
         </button>
       )}
+
       {/* Seção 1 - Headline + Sub-headline */}
       <section className="container mx-auto px-6 py-12 md:py-20 lg:py-32">
         <div className="max-w-5xl mx-auto text-center">
@@ -155,10 +204,9 @@ export default function Vendas() {
             </p>
             <p className="text-text-secondary text-base md:text-lg lg:text-xl leading-relaxed">
               E ainda tem o{" "}
-              <strong className="text-foreground">Walt&apos;s</strong>, seu agente
-              financeiro virtual, pronto para te orientar com dicas
-              personalizadas e análises do seu dinheiro — como se fosse um
-              mentor de bolso.
+              <strong className="text-foreground">Walt&apos;s</strong>, seu
+              assistente financeiro pessoal que responde suas dúvidas via chat
+              e te dá análises e dicas personalizadas sobre o seu dinheiro.
             </p>
           </div>
           <div className="relative flex justify-center md:justify-end">
@@ -201,8 +249,8 @@ export default function Vendas() {
                 Veja seus gastos categorizados com clareza.
               </StepItem>
               <StepItem number={4}>
-                Siga as orientações simples do Walt&apos;s para fazer seu dinheiro
-                durar.
+                Pergunte ao Walt&apos;s via chat e receba dicas personalizadas
+                para fazer seu dinheiro durar mais.
               </StepItem>
               <StepItem number={5}>
                 Use diariamente por 5 minutos e veja seu dinheiro render mais.
@@ -250,22 +298,22 @@ export default function Vendas() {
               Feito para quem quer simplicidade de verdade
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              <DifferentialCard icon="📸" title="Basta uma foto">
+              <DifferentialCard icon={<ScanIcon className="w-10 h-10" />} title="Basta uma foto">
                 Sem digitar, sem planilhar, sem burocracia.
               </DifferentialCard>
-              <DifferentialCard icon="🤖" title="Walt&apos;s">
-                Seu agente financeiro pessoal 24h por dia.
+              <DifferentialCard icon={<AIIcon className="w-10 h-10" />} title="Walt&apos;s">
+                Assistente financeiro pessoal via chat, com análises e dicas sob medida.
               </DifferentialCard>
-              <DifferentialCard icon="🎯" title="Foco em simplicidade">
+              <DifferentialCard icon={<TargetIcon className="w-10 h-10" />} title="Foco em simplicidade">
                 Interface limpa e fácil de entender.
               </DifferentialCard>
-              <DifferentialCard icon="💬" title="Linguagem humana">
+              <DifferentialCard icon={<ChatIcon className="w-10 h-10" />} title="Linguagem humana">
                 Nada técnico, tudo simples e direto.
               </DifferentialCard>
-              <DifferentialCard icon="🔒" title="Acesso seguro">
+              <DifferentialCard icon={<LockIcon className="w-10 h-10" />} title="Acesso seguro">
                 Seus dados protegidos com criptografia.
               </DifferentialCard>
-              <DifferentialCard icon="✨" title="Interface intuitiva">
+              <DifferentialCard icon={<SparkleIcon className="w-10 h-10" />} title="Interface intuitiva">
                 Bonito de ver, fácil de usar.
               </DifferentialCard>
             </div>
@@ -284,14 +332,14 @@ export default function Vendas() {
             financeira com leveza. Ative seu acesso por 1 ano ao app Pocket por
             apenas{" "}
             <strong className="text-foreground text-xl md:text-2xl">
-              R$97
+              10x de R$11,66
             </strong>
             .
           </p>
           <a
             href="#comprar"
             onClick={handleCtaClick}
-            className="inline-block px-8 py-4 md:px-12 md:py-5 bg-[#fee077] text-black rounded-xl hover:opacity-90 transition-opacity font-semibold text-lg md:text-xl"
+            className="inline-block px-6 py-3 sm:px-8 sm:py-4 md:px-12 md:py-5 bg-[#fee077] text-black rounded-xl hover:opacity-90 transition-opacity font-semibold text-base sm:text-lg md:text-xl"
           >
             Quero controlar meu dinheiro agora!
           </a>
@@ -324,8 +372,8 @@ export default function Vendas() {
         </div>
       </section>
 
-      {/* Seção 9 - Demonstração */}
-      <section className="container mx-auto px-6 py-12 md:py-20 lg:py-32">
+      {/* Seção 9 - Demonstração (oculta temporariamente) */}
+      {false && <section className="container mx-auto px-6 py-12 md:py-20 lg:py-32">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 text-center">
             Veja o Pocket em ação
@@ -333,31 +381,71 @@ export default function Vendas() {
           <p className="text-text-secondary text-base md:text-lg lg:text-xl text-center mb-10 md:mb-16">
             Interface limpa e intuitiva para você focar no que importa
           </p>
-          <div className="flex justify-center">
+          <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-8">
+            {/* Seta Esquerda */}
+            <button
+              onClick={prevSlide}
+              className="p-2 sm:p-3 md:p-4 rounded-full bg-surface border-2 border-border hover:bg-background hover:border-foreground/20 transition-colors flex-shrink-0"
+              aria-label="Slide anterior"
+            >
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Imagem do Carrossel */}
             {mounted ? (
               <Image
-                src={getPhoneImage()}
-                alt="Demonstração do App Pocket"
+                src={getCarouselImage()}
+                alt={`Demonstração do App Pocket - Tela ${carouselIndex + 1}`}
                 width={350}
                 height={700}
-                className="w-full max-w-xs md:max-w-sm h-auto"
+                className="w-full max-w-[200px] sm:max-w-xs md:max-w-sm h-auto"
               />
             ) : (
               <div
-                className="w-full max-w-xs md:max-w-sm h-auto"
+                className="w-full max-w-[200px] sm:max-w-xs md:max-w-sm h-auto"
                 style={{ aspectRatio: "1/2" }}
               />
             )}
+
+            {/* Seta Direita */}
+            <button
+              onClick={nextSlide}
+              className="p-2 sm:p-3 md:p-4 rounded-full bg-surface border-2 border-border hover:bg-background hover:border-foreground/20 transition-colors flex-shrink-0"
+              aria-label="Próximo slide"
+            >
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Indicadores */}
+          <div className="flex justify-center gap-2 mt-6 md:mt-8">
+            {Array.from({ length: totalSlides }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCarouselIndex(index)}
+                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors ${
+                  index === carouselIndex
+                    ? "bg-[#fee077]"
+                    : "bg-border hover:bg-text-secondary"
+                }`}
+                aria-label={`Ir para slide ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* Seção 10 - Autoridade */}
       <section className="bg-surface py-12 md:py-20">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 md:mb-8">
-              Criado por quem entende sua dor
+              Criado por quem entende{" "}
+              <span className="whitespace-nowrap">sua dor</span>
             </h2>
             <p className="text-text-secondary text-base md:text-lg lg:text-xl leading-relaxed">
               O Pocket foi criado por um desenvolvedor que{" "}
@@ -379,7 +467,7 @@ export default function Vendas() {
           <p className="text-text-secondary text-base md:text-lg lg:text-xl leading-relaxed mb-8 md:mb-12">
             Invista apenas{" "}
             <strong className="text-foreground text-xl md:text-2xl">
-              R$97
+              10x de R$11,66
             </strong>{" "}
             e ganhe clareza sobre seu dinheiro já na primeira semana. Acesse
             agora o Pocket por 1 ano e transforme sua relação com o dinheiro.
@@ -387,7 +475,7 @@ export default function Vendas() {
           <a
             href="#comprar"
             onClick={handleCtaClick}
-            className="inline-block px-8 py-4 md:px-12 md:py-5 bg-[#fee077] text-black rounded-xl hover:opacity-90 transition-opacity font-semibold text-lg md:text-xl"
+            className="inline-block px-6 py-3 sm:px-8 sm:py-4 md:px-12 md:py-5 bg-[#fee077] text-black rounded-xl hover:opacity-90 transition-opacity font-semibold text-base sm:text-lg md:text-xl"
           >
             Quero controlar meu dinheiro agora!
           </a>
@@ -431,14 +519,14 @@ export default function Vendas() {
       </section>
 
       {/* Seção 13 - Garantia */}
-      <section className="container mx-auto px-6 py-12 md:py-20">
+      <section className="container mx-auto px-4 sm:px-6 py-12 md:py-20">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-surface border-2 border-[#fee077] rounded-2xl p-6 md:p-10 text-center">
-            <div className="text-5xl md:text-6xl mb-4">🛡️</div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4">
+          <div className="bg-surface border-2 border-[#fee077] rounded-2xl p-4 sm:p-6 md:p-10 text-center">
+            <div className="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4">🛡️</div>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-3 sm:mb-4">
               Garantia Incondicional de 7 Dias
             </h2>
-            <p className="text-text-secondary text-base md:text-lg lg:text-xl leading-relaxed">
+            <p className="text-text-secondary text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
               Testou e não achou útil? Basta enviar um e-mail e devolvemos{" "}
               <strong className="text-foreground">
                 100% do seu investimento
@@ -450,12 +538,12 @@ export default function Vendas() {
       </section>
 
       {/* Seção 14 - Escassez / Urgência */}
-      <section className="bg-[#fee077] py-8 md:py-12">
-        <div className="container mx-auto px-6">
+      <section className="bg-[#fee077] py-6 sm:py-8 md:py-12">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-black text-lg md:text-xl lg:text-2xl font-semibold">
+            <p className="text-black text-sm sm:text-lg md:text-xl lg:text-2xl font-semibold">
               ⚠️ Oferta por tempo limitado: Ative seu acesso ao Pocket por{" "}
-              <strong>R$97</strong> antes que o valor mude.
+              <strong>10x de R$11,66</strong> antes que o valor mude.
             </p>
           </div>
         </div>
@@ -469,7 +557,7 @@ export default function Vendas() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 md:mb-8">
             Comece hoje com apenas{" "}
-            <span className="text-[#fee077]">R$97</span>
+            <span className="text-[#fee077]">10x de R$11,66</span>
           </h2>
           <p className="text-text-secondary text-base md:text-lg lg:text-xl leading-relaxed mb-8 md:mb-12">
             Ative seu acesso de 1 ano ao Pocket, tenha clareza dos seus gastos e
@@ -480,7 +568,7 @@ export default function Vendas() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleCheckoutClick}
-            className="inline-block px-10 py-5 md:px-14 md:py-6 bg-[#fee077] text-black rounded-xl hover:opacity-90 transition-opacity font-bold text-xl md:text-2xl mb-6"
+            className="inline-block px-6 py-4 sm:px-10 sm:py-5 md:px-14 md:py-6 bg-[#fee077] text-black rounded-xl hover:opacity-90 transition-opacity font-bold text-lg sm:text-xl md:text-2xl mb-6"
           >
             Quero controlar meu dinheiro agora!
           </a>
@@ -511,7 +599,7 @@ export default function Vendas() {
                 Acesso garantido por 1 ano
               </InfoCard>
               <InfoCard icon="💬" title="Suporte">
-                Via e-mail ou chat com o Walt&apos;s
+                Via e-mail ou chat direto no app
               </InfoCard>
               <InfoCard icon="🔒" title="Segurança">
                 Dados criptografados
@@ -526,9 +614,11 @@ export default function Vendas() {
 
 function ProblemItem({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex items-start gap-4 p-4 md:p-6 bg-background rounded-xl border-2 border-border">
-      <span className="text-2xl md:text-3xl flex-shrink-0">😰</span>
-      <p className="text-base md:text-lg lg:text-xl text-foreground">
+    <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 md:p-6 bg-background rounded-xl border-2 border-border">
+      <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12,0C5.383,0,0,5.383,0,12s5.383,12,12,12,12-5.383,12-12S18.617,0,12,0Zm-.091,15.419c-.387.387-.896.58-1.407.58s-1.025-.195-1.416-.585l-2.782-2.696,1.393-1.437,2.793,2.707,5.809-5.701,1.404,1.425-5.793,5.707Z"/>
+      </svg>
+      <p className="text-sm sm:text-base md:text-lg lg:text-xl text-foreground">
         {children}
       </p>
     </div>
@@ -543,11 +633,11 @@ function StepItem({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex items-center gap-4 md:gap-6">
-      <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 bg-[#fee077] text-black rounded-xl flex items-center justify-center font-bold text-xl md:text-2xl">
+    <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
+      <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-[#fee077] text-black rounded-xl flex items-center justify-center font-bold text-lg sm:text-xl md:text-2xl">
         {number}
       </div>
-      <p className="text-base md:text-lg lg:text-xl text-foreground">
+      <p className="text-sm sm:text-base md:text-lg lg:text-xl text-foreground">
         {children}
       </p>
     </div>
@@ -563,12 +653,12 @@ function BenefitCard({
 }) {
   return (
     <div
-      className={`p-4 md:p-6 bg-surface rounded-xl border-2 border-border flex items-center gap-4 ${className}`}
+      className={`p-3 sm:p-4 md:p-6 bg-surface rounded-xl border-2 border-border flex items-center gap-3 sm:gap-4 ${className}`}
     >
-      <span className="text-2xl md:text-3xl text-[#fee077] flex-shrink-0">
+      <span className="text-xl sm:text-2xl md:text-3xl text-[#fee077] flex-shrink-0">
         ✓
       </span>
-      <p className="text-base md:text-lg lg:text-xl text-foreground">
+      <p className="text-sm sm:text-base md:text-lg lg:text-xl text-foreground">
         {children}
       </p>
     </div>
@@ -580,15 +670,15 @@ function DifferentialCard({
   title,
   children,
 }: {
-  icon: string;
+  icon: ReactNode;
   title: string;
   children: React.ReactNode;
 }) {
   return (
-    <div className="p-4 md:p-6 bg-background rounded-xl border-2 border-border hover:border-[#fee077] transition-colors">
-      <div className="text-3xl md:text-4xl mb-3">{icon}</div>
-      <h3 className="text-lg md:text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-text-secondary text-sm md:text-base">{children}</p>
+    <div className="p-3 sm:p-4 md:p-6 bg-background rounded-xl border-2 border-border hover:border-[#fee077] transition-colors">
+      <div className="mb-2 sm:mb-3 text-foreground">{icon}</div>
+      <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-1 sm:mb-2">{title}</h3>
+      <p className="text-text-secondary text-xs sm:text-sm md:text-base">{children}</p>
     </div>
   );
 }
@@ -603,17 +693,17 @@ function TestimonialCard({
   location: string;
 }) {
   return (
-    <div className="p-6 md:p-8 bg-background rounded-xl border-2 border-border">
-      <p className="text-base md:text-lg lg:text-xl text-foreground leading-relaxed mb-6 italic">
+    <div className="p-4 sm:p-6 md:p-8 bg-background rounded-xl border-2 border-border">
+      <p className="text-sm sm:text-base md:text-lg lg:text-xl text-foreground leading-relaxed mb-4 sm:mb-6 italic">
         &ldquo;{quote}&rdquo;
       </p>
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 md:w-12 md:h-12 bg-[#fee077] rounded-full flex items-center justify-center text-black font-bold text-lg">
+        <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#fee077] rounded-full flex items-center justify-center text-black font-bold text-base sm:text-lg">
           {author.charAt(0)}
         </div>
         <div>
-          <p className="font-semibold text-foreground">{author}</p>
-          <p className="text-text-secondary text-sm">{location}</p>
+          <p className="font-semibold text-foreground text-sm sm:text-base">{author}</p>
+          <p className="text-text-secondary text-xs sm:text-sm">{location}</p>
         </div>
       </div>
     </div>
@@ -628,12 +718,12 @@ function FAQItem({
   children: React.ReactNode;
 }) {
   return (
-    <div className="p-4 md:p-6 bg-background rounded-xl border-2 border-border">
-      <h3 className="text-lg md:text-xl font-semibold mb-2 flex items-start gap-2">
+    <div className="p-3 sm:p-4 md:p-6 bg-background rounded-xl border-2 border-border">
+      <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-1 sm:mb-2 flex items-start gap-2">
         <span className="text-[#fee077]">📌</span>
         {question}
       </h3>
-      <p className="text-text-secondary text-base md:text-lg pl-7">
+      <p className="text-text-secondary text-sm sm:text-base md:text-lg pl-6 sm:pl-7">
         {children}
       </p>
     </div>
@@ -650,10 +740,10 @@ function InfoCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="p-4 md:p-6 bg-background rounded-xl border-2 border-border text-center">
-      <div className="text-3xl md:text-4xl mb-2">{icon}</div>
-      <h3 className="text-base md:text-lg font-semibold mb-1">{title}</h3>
-      <p className="text-text-secondary text-sm md:text-base">{children}</p>
+    <div className="p-3 sm:p-4 md:p-6 bg-background rounded-xl border-2 border-border text-center">
+      <div className="text-2xl sm:text-3xl md:text-4xl mb-1 sm:mb-2">{icon}</div>
+      <h3 className="text-sm sm:text-base md:text-lg font-semibold mb-1">{title}</h3>
+      <p className="text-text-secondary text-xs sm:text-sm md:text-base">{children}</p>
     </div>
   );
 }
